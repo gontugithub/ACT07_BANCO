@@ -14,14 +14,9 @@ class BBDD_CTRLR{
         return $lista;
     }
     
-    public static function CRUD($sql, $como){        
+    public static function CRUD($sql){        
         $cnx = Conexion::conectar();
         mysqli_query($cnx, $sql);
-        if ($como == 'i'){
-            $n = mysqli_insert_id($cnx);    
-        } else{
-            $n = mysqli_affected_rows($cnx);
-        }
         mysqli_close($cnx);
         return $n;
     }

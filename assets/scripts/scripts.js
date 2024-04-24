@@ -262,3 +262,23 @@ function fOcultarModal(){
     document.querySelector("#div_modal").style.display = "none";
 }
 
+
+function fRellenaCombo() {
+    let sql = "SELECT * FROM cuentas ORDER BY c_num_cta";
+    const URL = "assets/php/servidor.php?peticion=EjecutarSelect&sql=" + sql;
+    fetch(URL)
+        .then((response) => response.json())
+        .then((data) => {
+            console.log("CURSOS CARGAR", data);
+            
+            let html = `<select id='${como_se_llama}' class='input'>`
+            html += "<option></option>"
+            data.datos.forEach(item => {
+                html += `<option value="${item.cur_id}">${item.cur_nombre}</option>`
+            });
+            html += "</select>"
+            document.querySelector(donde_lo_dejo).innerHTML = html
+
+
+        })
+}

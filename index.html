@@ -10,11 +10,15 @@
     <link rel="stylesheet" href="assets/fontawesome-free-5.15.4-web/css/all.css">
     <script src="assets/fontawesome-free-5.15.4-web/js/all.js"></script>
 </head>
-<body>
+<body onload="fRellenaCombo()">
     <div id="div_modal">
 
         <div id="formulario_cuenta" class="formulario">
             <!-- <label for="cta_id">ID</label> LO OCULTMAOS UN MOMENTO -->
+            <label for="cta_id" id="cta_num_cta" hidden="hidden">Nº CUENTA</label>
+            <select id="cta_id_option">
+                
+            </select>
             <input type="hidden" id="cta_id">
             <label for="cta_titular">TITULAR</label>
             <input type="text" id="cta_titular" autocomplete="off" maxlength="50">
@@ -52,50 +56,13 @@
     </aside>
     <section>
         
-        <div id="acciones_cuentas">
-            <div id="acciones_cuentas_insertar" title="INSERT" onclick="fPrepararFormulario('i','c')">(+)</div>
-        </div>
-
-        <div id="acciones_movimiento">
-            <div id="acciones_movimiento_insertar">(+)</div>
-           
-        </div>
-         
-        <div class="cuenta">
-            <div class="datos_cuenta">
-                <div class="cuenta_nombre">Gonzalo</div>
-                <div class="cuenta_num">0000000001</div>
-                <div class="cuenta_nif">02748554P</div>
-                <div class="cuenta_fcha_crea">2024-02-12 00:00:00</div>
-                <div class="cuenta_saldo">
-                    SALDO: <div class="cantidad_saldo"> 1</div>
-                </div>
-            </div>
-            <div class="accion_cuenta">
-                <i class="fas fa-edit" title="MOD 1" onclick="fPrepararFormulario('m','c')"></i>
-                <i class="fas fa-trash" ></i>
-            </div>
-        </div>
-
-        <div class="movimiento">
-            <div class="datos_movimiento">
-                <div class="movimiento_cta_num">Gonzalo</div>
-                <div class="movimiento_id">0000000001</div>
-                <div class="movimiento_concepto">02748554P</div>
-                <div class="movimiento_fcha">2024-02-12 00:00:00</div>
-                <div class="movimiento_importe">
-                    IMPORTE: <p class="importe"> 1</p>
-                </div>
-            </div>
-            <div class="accion_movimiento"> 
-                <i class="fas fa-edit"></i>
-                <i class="fas fa-trash"></i>
-            </div>
-        </div>
-
-       
-
-
+        <select id="hola">
+            <option value="1">Gonzalo</option>
+            <option value="1">pepe</option>
+            <option value="1">juan</option>
+            <option value="1">Gonzalo</option>
+        </select>
+   
     </section>
     <footer>GONZALO SANCHEZ ALVAREZ</footer>
 </body>

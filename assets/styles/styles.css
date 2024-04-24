@@ -95,3 +95,10 @@ table{
 th, td {
     padding: auto;
 }
+
+#cta_id_option{
+    display: none;
+
+}
+
+

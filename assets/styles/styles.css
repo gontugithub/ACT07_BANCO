@@ -52,6 +52,33 @@ section {
     color: black;
 }
 
+
+.cuenta{
+    
+    width: 90%;
+    display: flex;
+    justify-content: space-between;
+    
+}
+
+.datos_cuenta{
+   
+    width: 90%;
+    display: flex;
+}
+
+.accion_cuenta{
+    
+    width: 10%;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+.accion_cuenta > i {
+    padding: 4px;
+}
+
 footer {
     grid-area: zf;
     background-color: #234567;

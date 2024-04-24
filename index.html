@@ -22,24 +22,25 @@
             <input type="number" id="cta_nif">
             <p id="cta_error" class="frm_error">&nbsp;ERROR</p>
             <div class="botonera">
-                <div id="cta_cancelar">CANCEL</div>
-                <div id="cta_add">ADD</div>
-                <div id="cta_mod">MOD</div>
+                <div id="cta_cancelar" onclick="fOcultarModal()">CANCEL</div>
+                <div id="cta_add" onclick="fEjecutarCRUDcuenta('i', 0)">ADD</div>
+                <div id="cta_mod" onclick="fEjecutarCRUDcuenta('m', 0)">MOD</div>
             </div>
 
         </div>
 
         <div id="formulario_movimiento" class="formulario">
             <input type="hidden" id="m_id" >
+            <input type="text" id="m_idc" placeholder="ID CUENTA" >
             <label for="m_concepto">CONCEPTO</label>
             <input type="text" id="m_concepto" autocomplete="off" maxlength="50">
             <label for="m_importe">IMPORTE</label>
             <input type="number" id="m_importe">
             <p id="m_error" class="frm_error">&nbsp;ERROR</p>
             <div class="botonera">
-                <div id="cancelar">CANCEL</div>
-                <div id="m_add">ADD</div>
-                <div id="m_mod">MOD</div>
+                <div id="m_cancelar" onclick="fOcultarModal()">CANCEL</div>
+                <div id="m_add" onclick="fEjecutarCRUDMovimiento('i',0)">ADD</div>
+                <div id="m_mod" onclick="fEjecutarCRUDMovimiento('m',0)">MOD</div>
             </div>
         </div>
             
@@ -67,7 +68,7 @@
                 <div class="cuenta_nif">02748554P</div>
                 <div class="cuenta_fcha_crea">2024-02-12 00:00:00</div>
                 <div class="cuenta_saldo">
-                    SALDO: <p class="cantidad_saldo"> 1</p>
+                    SALDO: <div class="cantidad_saldo"> 1</div>
                 </div>
             </div>
             <div class="accion_cuenta">

@@ -25,7 +25,7 @@ function fMostrarCuentas(){ // MUESTRA TODAS LAS CUENTAS
                 html += `<div class="cuenta_fcha_crea">${item.c_fecha_creacion}</div>`;
                 html += `<div class="cuenta_saldo">SALDO: <p class="cantidad_saldo">${item.c_saldo}</p></div></div>`
                 html += `<div class="accion_cuenta"><i class="fas fa-edit" title="MOD ${item.c_num_cta}" onclick="fPrepararFormulario('m','c')">` // MOD CTA
-                html += `</i><i class="fas fa-trash"></i></div></div>` // FALTA ELIMINAR CUENTA
+                html += `</i><i class="fas fa-trash" onclick="fEjecutarCRUDcuenta('d', '${item.c_num_cta}')"></i></div></div>` // FALTA ELIMINAR CUENTA
   
             });
 
@@ -62,7 +62,7 @@ function fMostrarMovimientos(){ // MUESTRA TODOS LOS MOVIMIENTOS
                 html += `<div class="movimiento_fcha">${item.m_fecha}</div>`;
                 html += `<div class="movimiento_importe">IMPORTE: <p class="importe">${item.m_importe}</p></div></div>`
                 html += `<div class="accion_movimiento"><i class="fas fa-edit" title="MOD ${item.m_id}" onclick="fPrepararFormulario('m','m')">`
-                html += `</i><i class="fas fa-trash" title="ELIMINAR ${item.m_id}"></i></div></div>`
+                html += `</i><i class="fas fa-trash" onclick="fEjecutarCRUDMovimiento('d', '${item.m_id}')" title="ELIMINAR ${item.m_id}" ></i></div></div>`
   
             });
 
@@ -119,6 +119,7 @@ function fPrepararFormulario(para, formulario){ // RECIBIMOS UN PARAMETRO PARA S
         document.querySelector("#m_add").style.display = "none";
         document.querySelector("#m_mod").style.display = "block";
         document.querySelector("#m_id").type = "text";
+
     }
 
     if(formulario == "c"){ // NOS ESTAN PASANDO LOS DATOS DESDE CUENTA
@@ -130,12 +131,134 @@ function fPrepararFormulario(para, formulario){ // RECIBIMOS UN PARAMETRO PARA S
 
 
     if(formulario == "m"){ // NOS ESTAN PASANDO LOS DATOS DESDE MOVIMIENTOS
-
+        
+        document.querySelector("#m_error").innerHTML = "&nbsp;"
         fAbrirFormulario("#formulario_movimiento");
 
     }
     
+}
+
+function fEjecutarCRUDcuenta(operacion, idcuenta){
+
+    let sql = ""; // GUARDAEMOS EL SQL EN ESTA VARIABLE PARA LUEGO ENVIARLO EN EL PHP
+    let id = idcuenta;
+    let nif = document.querySelector("#cta_nif").value;
+    let titular = document.querySelector("#cta_titular").value;
+    console.log(id)
+    
+    if (operacion == "i") { // INSERTAR
+
+        // cta_insertar(in _nif varchar(9), in _titular varchar(50)) -> LO QUE RECIBE LA PROCEDURE
+
+        sql = `call cta_insertar('${nif}', '${titular}')`;
+
+    }
+
+    if (operacion == "d") { // INSERTAR
+
+        // cta_borrar( in _id int) -> LO QUE RECIBE LA PROCEDURE
+
+        sql = `call cta_borrar('${id}')`;
+
+    }
+
+    if (operacion == "m") { // MODIFICAR
+
+        // ( in _id int, in _nif varchar(9), in _titular varchar(50)) -> LO QUE RECIBE LA PROCEDURE
+
+        id = document.querySelector("#cta_id").value;
+
+        sql = `call cta_modificar('${id}', '${nif}', '${titular}')`;
+
+    }
+
+    const URL = "assets/php/servidor.php?peticion=EjecutarInsertUpdateDelete&sql=" + sql;
+
+    fetch(URL)
+        .then((response) => response.json())
+        .then((data) => {
+            console.log("ID CREADO", data);
+           
+        })
+    
+    .finally (()=> {
 
 
+        fMostrarCuentas();
+        fOcultarModal();
+    
+        });
+
+
+
+
+}
+
+function fOcultarModal(){
+    document.querySelector("#div_modal").style.display = "none";
+}
+
+function fEjecutarCRUDMovimiento(operacion, idmov){
+
+    let sql = ""; // GUARDAEMOS EL SQL EN ESTA VARIABLE PARA LUEGO ENVIARLO EN EL PHP
+    let idmovimiento = idmov;
+    let idcuenta = document.querySelector("#m_idc").value;;
+    let m_concepto = document.querySelector("#m_concepto").value;
+    let importe = document.querySelector("#m_importe").value;
+    console.log(idmov)
+    
+    if (operacion == "i") { // INSERTAR
+
+        //  m_insertar(in _idcuenta int, in _importe decimal(10,2), in _concepto varchar(50))
+
+        sql = `call m_insertar('${idcuenta}', '${importe}', '${m_concepto}')`;
+
+    }
+
+    if (operacion == "d") { // INSERTAR
+
+        // cta_borrar( in _id int) -> LO QUE RECIBE LA PROCEDURE
+
+        sql = `call m_borrar('${idmovimiento}')`;
+
+    }
+
+    if (operacion == "m") { // MODIFICAR
+
+
+
+        // m_modificar(in _id int, in _importe decimal(10,2), in _concepto varchar(50))
+
+        idmovimiento = document.querySelector("#m_id").value;
+
+        sql = `call m_modificar('${idmovimiento}', '${importe}', '${m_concepto}')`;
+
+    }
+
+    const URL = "assets/php/servidor.php?peticion=EjecutarInsertUpdateDelete&sql=" + sql;
+
+    fetch(URL)
+        .then((response) => response.json())
+        .then((data) => {
+            console.log("ID CREADO", data);
+           
+        })
+    
+    .finally (()=> {
+
+
+        fMostrarMovimientos();
+        fOcultarModal();
+    
+        });
+
+
+
+
+}
+
+function fOcultarModal(){
+    document.querySelector("#div_modal").style.display = "none";
 }
 

@@ -8,15 +8,12 @@ if (isset($_REQUEST['peticion'])) {
             $datos['datos'] = BBDD_CTRLR::Consultas($sql);
             echo json_encode($datos);      
             break;
-        case "EjecutarInsert":
+        case "EjecutarInsertUpdateDelete":
             $sql = $_REQUEST['sql'];
-            $datos['datos'] = BBDD_CTRLR::CRUD($sql, 'i');
-            echo json_encode($datos);      
-            break;
-        case "EjecutarUpdateDelete":
-            $sql = $_REQUEST['sql'];
-            $datos['datos'] = BBDD_CTRLR::CRUD($sql, '');
+            $datos['datos'] = BBDD_CTRLR::CRUD($sql);
             echo json_encode($datos);      
             break;
     }        
 }
+
+

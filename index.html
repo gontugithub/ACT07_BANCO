@@ -11,15 +11,53 @@
     <script src="assets/fontawesome-free-5.15.4-web/js/all.js"></script>
 </head>
 <body>
+    <div id="div_modal">
+
+        <div id="formulario_cuenta" class="formulario">
+            <!-- <label for="cta_id">ID</label> LO OCULTMAOS UN MOMENTO -->
+            <input type="hidden" id="cta_id">
+            <label for="cta_titular">TITULAR</label>
+            <input type="text" id="cta_titular" autocomplete="off" maxlength="50">
+            <label for="cta_nif">NIF/NIE</label>
+            <input type="number" id="cta_nif">
+            <p id="cta_error" class="frm_error">&nbsp;ERROR</p>
+            <div class="botonera">
+                <div id="cta_cancelar">CANCEL</div>
+                <div id="cta_add">ADD</div>
+                <div id="cta_mod">MOD</div>
+            </div>
+
+        </div>
+
+        <div id="formulario_movimiento" class="formulario">
+            <input type="hidden" id="m_id" >
+            <label for="m_concepto">CONCEPTO</label>
+            <input type="text" id="m_concepto" autocomplete="off" maxlength="50">
+            <label for="m_importe">IMPORTE</label>
+            <input type="number" id="m_importe">
+            <p id="m_error" class="frm_error">&nbsp;ERROR</p>
+            <div class="botonera">
+                <div id="cancelar">CANCEL</div>
+                <div id="m_add">ADD</div>
+                <div id="m_mod">MOD</div>
+            </div>
+        </div>
+            
+    </div>
     <header>ACT07_BANCO</header>
     <aside>
         <div onclick="fMostrarCuentas()">CUENTAS</div>
-        <div>MOVIMIENTOS</div>
+        <div onclick="fMostrarMovimientos()">MOVIMIENTOS</div>
     </aside>
     <section>
+        
         <div id="acciones_cuentas">
-            <div id="acciones_cuentas_insertar">(+)</div>
-            <div id="acciones_cuentas_eliminar">(-)</div>
+            <div id="acciones_cuentas_insertar" title="INSERT" onclick="fPrepararFormulario('i','c')">(+)</div>
+        </div>
+
+        <div id="acciones_movimiento">
+            <div id="acciones_movimiento_insertar">(+)</div>
+           
         </div>
          
         <div class="cuenta">
@@ -33,42 +71,28 @@
                 </div>
             </div>
             <div class="accion_cuenta">
+                <i class="fas fa-edit" title="MOD 1" onclick="fPrepararFormulario('m','c')"></i>
+                <i class="fas fa-trash" ></i>
+            </div>
+        </div>
+
+        <div class="movimiento">
+            <div class="datos_movimiento">
+                <div class="movimiento_cta_num">Gonzalo</div>
+                <div class="movimiento_id">0000000001</div>
+                <div class="movimiento_concepto">02748554P</div>
+                <div class="movimiento_fcha">2024-02-12 00:00:00</div>
+                <div class="movimiento_importe">
+                    IMPORTE: <p class="importe"> 1</p>
+                </div>
+            </div>
+            <div class="accion_movimiento"> 
                 <i class="fas fa-edit"></i>
                 <i class="fas fa-trash"></i>
             </div>
         </div>
 
-        <div class="cuenta">
-            <div class="datos_cuenta">
-                <div class="cuenta_nombre">Gonzalo</div>
-                <div class="cuenta_num">0000000001</div>
-                <div class="cuenta_nif">02748554P</div>
-                <div class="cuenta_fcha_crea">2024-02-12 00:00:00</div>
-                <div class="cuenta_saldo">
-                    SALDO: <p class="cantidad_saldo"> 1</p>
-                </div>
-            </div>
-            <div class="accion_cuenta">
-                <i class="fas fa-edit"></i>
-                <i class="fas fa-trash"></i>
-            </div>
-        </div>
-
-        <div class="cuenta">
-            <div class="datos_cuenta">
-                <div class="cuenta_nombre">Gonzalo</div>
-                <div class="cuenta_num">0000000001</div>
-                <div class="cuenta_nif">02748554P</div>
-                <div class="cuenta_fcha_crea">2024-02-12 00:00:00</div>
-                <div class="cuenta_saldo">
-                    SALDO: <p class="cantidad_saldo"> 1</p>
-                </div>
-            </div>
-            <div class="accion_cuenta">
-                <i class="fas fa-edit"></i>
-                <i class="fas fa-trash"></i>
-            </div>
-        </div>
+       
 
 
     </section>

@@ -53,31 +53,6 @@ section {
 }
 
 
-.cuenta{
-    
-    width: 90%;
-    display: flex;
-    justify-content: space-between;
-    
-}
-
-.datos_cuenta{
-   
-    width: 90%;
-    display: flex;
-}
-
-.accion_cuenta{
-    
-    width: 10%;
-    display: flex;
-    align-items: center;
-    justify-content: space-evenly;
-}
-
-.accion_cuenta > i {
-    padding: 4px;
-}
 
 footer {
     grid-area: zf;
@@ -88,17 +63,97 @@ footer {
     justify-content: center;
     align-items: center;
 }
-table{
-    margin:3px;
-}
 
-th, td {
-    padding: auto;
-}
 
 #cta_id_option{
     display: none;
 
 }
+
+.movimiento{
+    width: 80%;
+    margin: 20px auto;
+    display: flex;
+    background-color: white;
+    border-radius: 10px;
+}
+
+.movimiento_concepto{
+    font-weight: 500;
+}
+
+.datos_movimiento{
+    width: 90%;
+    display: flex;
+    flex-wrap: wrap;
+}
+.datos_movimiento > div {
+    height: 33%;
+    width: 100%;
+    padding: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+.movimiento_importe{
+    display: flex;
+}
+
+.con_num {
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+
+.accion_movimiento{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;    
+}
+
+.accion_movimiento > i{
+margin: 5px;
+}
+
+.cuenta{
+    width: 80%;
+    margin: 20px auto;
+    display: flex;
+    background-color: white;
+    border-radius: 10px;
+}
+
+.datos_cuenta{
+    width: 90%;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.datos_cuenta > div {
+    height: 33%;
+    width: 100%;
+    padding: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+
+.accion_cuenta{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;    
+}
+
+.accion_cuenta > i{
+margin: 5px;
+}
+
+.cuenta_saldo{
+    display: flex;
+}
+
 
 

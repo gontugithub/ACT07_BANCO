@@ -18,15 +18,22 @@ function fMostrarCuentas(){ // MUESTRA TODAS LAS CUENTAS
             data.datos.forEach(item => {
 
                 html += `<div class="cuenta">`;
-                html += `<div class="datos_cuenta">`;
-                html += `<div class="cuenta_nombre">${item.c_titular}</div>`;
-                html += `<div class="cuenta_num">${item.c_num_cta}</div>`;
-                html += `<div class="cuenta_nif">${item.c_nif}</div>`;
-                html += `<div class="cuenta_fcha_crea">${item.c_fecha_creacion}</div>`;
-                html += `<div class="cuenta_saldo">SALDO: <p class="cantidad_saldo">${item.c_saldo}</p></div></div>`
-                html += `<div class="accion_cuenta"><i class="fas fa-edit" title="MOD ${item.c_num_cta}" onclick="fPrepararFormulario('m','c')">` // MOD CTA
-                html += `</i><i class="fas fa-trash" onclick="fEjecutarCRUDcuenta('d', '${item.c_num_cta}')"></i></div></div>` // FALTA ELIMINAR CUENTA
-  
+                html += `   <div class="datos_cuenta">`;
+                html += `       <div class="nom_nif">`;
+                html += `           <div class="cuenta_nombre">${item.c_titular}</div>`;
+                html += `           <div class="cuenta_nif">${item.c_nif}</div>`;
+                html += `       </div>`
+                html += `       <div class="saldo">`
+                html += `           <div class="cuenta_num">${item.c_num_cta}</div>`;
+                html += `           <div class="cuenta_saldo">SALDO: <p class="cantidad_saldo">${item.c_saldo}</p></div>`
+                html += `       </div>`
+                html += `       <div class="cuenta_fcha_crea">${item.c_fecha_creacion}</div>`;
+                html += `   </div>`
+                html += `   <div class="accion_cuenta">`
+                html += `   <i class="fas fa-edit" title="MOD ${item.c_num_cta}" onclick="fPrepararFormulario('m','c')"></i>` // MOD CTA
+                html += `   <i class="fas fa-trash" onclick="fEjecutarCRUDcuenta('d', '${item.c_num_cta}')"></i>`
+                html += `   </div>`
+                html += `</div>`
             });
 
             document.querySelector("section").innerHTML = html; //  TODO LO GUARDADO EN LA VARIABLE HTML, LO PONEMOS EN EL SECTION
@@ -55,16 +62,26 @@ function fMostrarMovimientos(){ // MUESTRA TODOS LOS MOVIMIENTOS
             data.datos.forEach(item => {
 
                 html += `<div class="movimiento">`;
-                html += `<div class="datos_movimiento">`
-                html += `<div class="movimiento_cta_num">${item.m_c_num_cta}</div>`;
+                html += `<div class="datos_movimiento">`;
+                html += `<div class="con_num">`
+                html += `   <div class="movimiento_concepto">${item.m_concepto}</div>`;
+                html += `   <div class="movimiento_importe">IMPORTE: <p class="importe">${item.m_importe}</p></div>`
+                html += `</div>`
+                html += `<div class="fcha_imp"> `
+                html += `   <div class="movimiento_cta_num">${item.m_c_num_cta}</div>`;
+                html += `   <div class="movimiento_fcha">${item.m_fecha}</div>`;
+                html += `</div>`
                 html += `<div class="movimiento_id">${item.m_id}</div>`;
-                html += `<div class="movimiento_concepto">${item.m_concepto}</div>`;
-                html += `<div class="movimiento_fcha">${item.m_fecha}</div>`;
-                html += `<div class="movimiento_importe">IMPORTE: <p class="importe">${item.m_importe}</p></div></div>`
-                html += `<div class="accion_movimiento"><i class="fas fa-edit" title="MOD ${item.m_id}" onclick="fPrepararFormulario('m','m')">`
-                html += `</i><i class="fas fa-trash" onclick="fEjecutarCRUDMovimiento('d', '${item.m_id}')" title="ELIMINAR ${item.m_id}" ></i></div></div>`
+                html += `</div>`
+                html += `<div class="accion_movimiento">`
+                html += `   <i class="fas fa-edit" title="MOD ${item.m_id}" onclick="fPrepararFormulario('m','m')"></i>`
+                html += `   <i class="fas fa-trash" onclick="fEjecutarCRUDMovimiento('d', '${item.m_id}')" title="ELIMINAR ${item.m_id}"></i>`
+                html += `</div>`
+                html += `</div>`
   
             });
+
+            console.log(html)
 
             document.querySelector("section").innerHTML = html;
 

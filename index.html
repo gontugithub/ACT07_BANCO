@@ -55,13 +55,39 @@
     </aside>
     <section>
         
-        <select id="hola">
-            <option value="1">Gonzalo</option>
-            <option value="1">pepe</option>
-            <option value="1">juan</option>
-            <option value="1">Gonzalo</option>
-        </select>
-   
+        <div class="cuenta">
+            <div class="datos_cuenta">
+                <div class="nom_nif">
+                    <div class="cuenta_nombre">GONZALO</div>
+                    
+                    <div class="cuenta_nif">0215</div>
+                </div>
+                <div class="saldo">
+                    <div class="cuenta_num">00000002</div>
+                    <div class="cuenta_saldo">SALDO: <p class="cantidad_saldo">154</p></div>
+                </div>
+                
+                <div class="cuenta_fcha_crea">1</div>
+               
+            </div>
+            <div class="accion_cuenta">
+                <i class="fas fa-edit" title="MOD ${item.c_num_cta}" onclick="fPrepararFormulario('m','c')"></i>
+                <i class="fas fa-trash" onclick="fEjecutarCRUDcuenta('d', '${item.c_num_cta}')"></i>
+            </div>
+        </div>
+
+
+
+
+            
+
+
+
+
+
+
+
+        
     </section>
     <footer>GONZALO SANCHEZ ALVAREZ</footer>
 </body>

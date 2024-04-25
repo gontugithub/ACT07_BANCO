@@ -15,10 +15,7 @@
 
         <div id="formulario_cuenta" class="formulario">
             <!-- <label for="cta_id">ID</label> LO OCULTMAOS UN MOMENTO -->
-            <label for="cta_id" id="cta_num_cta" hidden="hidden">Nº CUENTA</label>
-            <select id="cta_id_option">
-                
-            </select>
+            <label for="cta_id" id="cta_num_cta">Nº CUENTA</label>
             <input type="hidden" id="cta_id">
             <label for="cta_titular">TITULAR</label>
             <input type="text" id="cta_titular" autocomplete="off" maxlength="50">
@@ -34,8 +31,10 @@
         </div>
 
         <div id="formulario_movimiento" class="formulario">
-            <input type="hidden" id="m_id" >
-            <input type="text" id="m_idc" placeholder="ID CUENTA" >
+            <select id="m_idc">
+                
+            </select>
+            <input type="text" id="idm" placeholder="INTRODUZCA EL Nº MOVIMIENTO">
             <label for="m_concepto">CONCEPTO</label>
             <input type="text" id="m_concepto" autocomplete="off" maxlength="50">
             <label for="m_importe">IMPORTE</label>

@@ -98,11 +98,14 @@ function fPrepararFormulario(para, formulario){ // RECIBIMOS UN PARAMETRO PARA S
 
         document.querySelector("#cta_add").style.display = "block";
         document.querySelector("#cta_mod").style.display = "none";
+        document.querySelector("#cta_id").type = "hidden";
+        document.querySelector("#cta_num_cta").style.display = "none";
 
         // MOVIMIENTOS
 
         document.querySelector("#m_add").style.display = "block";
         document.querySelector("#m_mod").style.display = "none";
+        document.querySelector("#idm").style.display = "none";
     }
 
     if (para == "m"){ // I -> INSERTAR, M -> MODIFICAR
@@ -111,6 +114,7 @@ function fPrepararFormulario(para, formulario){ // RECIBIMOS UN PARAMETRO PARA S
 
         document.querySelector("#cta_add").style.display = "none";
         document.querySelector("#cta_mod").style.display = "block";
+        document.querySelector("#cta_num_cta").style.display = "block";
         document.querySelector("#cta_id").type = "text";
 
         
@@ -118,7 +122,8 @@ function fPrepararFormulario(para, formulario){ // RECIBIMOS UN PARAMETRO PARA S
 
         document.querySelector("#m_add").style.display = "none";
         document.querySelector("#m_mod").style.display = "block";
-        document.querySelector("#m_id").type = "text";
+        document.querySelector("#m_idc").style.display = "none";
+        document.querySelector("#idm").style.display = "block";
 
     }
 
@@ -187,6 +192,7 @@ function fEjecutarCRUDcuenta(operacion, idcuenta){
 
         fMostrarCuentas();
         fOcultarModal();
+        fRellenaCombo();
     
         });
 
@@ -211,7 +217,7 @@ function fEjecutarCRUDMovimiento(operacion, idmov){
     if (operacion == "i") { // INSERTAR
 
         //  m_insertar(in _idcuenta int, in _importe decimal(10,2), in _concepto varchar(50))
-
+        console.log(idcuenta)
         sql = `call m_insertar('${idcuenta}', '${importe}', '${m_concepto}')`;
 
     }
@@ -230,7 +236,7 @@ function fEjecutarCRUDMovimiento(operacion, idmov){
 
         // m_modificar(in _id int, in _importe decimal(10,2), in _concepto varchar(50))
 
-        idmovimiento = document.querySelector("#m_id").value;
+        idmovimiento = document.querySelector("#idm").value;
 
         sql = `call m_modificar('${idmovimiento}', '${importe}', '${m_concepto}')`;
 
@@ -270,14 +276,16 @@ function fRellenaCombo() {
         .then((response) => response.json())
         .then((data) => {
             console.log("CURSOS CARGAR", data);
-            
-            let html = `<select id='${como_se_llama}' class='input'>`
-            html += "<option></option>"
+
+            let html = "";
+
             data.datos.forEach(item => {
-                html += `<option value="${item.cur_id}">${item.cur_nombre}</option>`
+                html += `<option value="${item.c_num_cta}">${item.c_titular}&nbsp;${item.c_num_cta}</option>`
             });
-            html += "</select>"
-            document.querySelector(donde_lo_dejo).innerHTML = html
+
+            console.log(html);
+
+            document.querySelector("#m_idc").innerHTML = html;
 
 
         })

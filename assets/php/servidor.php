@@ -10,7 +10,7 @@ if (isset($_REQUEST['peticion'])) {
             break;
         case "EjecutarInsertUpdateDelete":
             $sql = $_REQUEST['sql'];
-            $datos['datos'] = BBDD_CTRLR::CRUD($sql);
+            $datos['datos'] = BBDD_CTRLR::CRUD($sql, '');
             echo json_encode($datos);      
             break;
     }        
